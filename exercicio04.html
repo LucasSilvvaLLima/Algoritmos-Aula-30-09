@@ -24,7 +24,20 @@
         var frequencia_valida = frequencia >= 0 && frequencia <= 100
         var mensagem = ""
 
-        if (!nota_valida || !frequencia_valida) {
+        if (nota_valida && frequencia_valida) {
+            if (nota <= 6) {
+                mensagem = "Aluno ficou abaixo da média"
+            } else if (nota <= 8) {
+                mensagem = "Aluno ficou na média"
+            } else {
+                mensagem = "Aluno acima da média"
+            }
+            if (frequencia < 75) {
+                mensagem += "<br>Aluno reprovado por frequência"
+            } else {
+                mensagem += "<br>Aluno aprovado por frequência"
+            }
+        } else {
             if (!nota_valida) {
                 alert("Onde já se viu nota <0 ou >10?!")
             }
@@ -32,17 +45,6 @@
                 alert("Onde já se viu frequência <0 ou >100?!")
             }
             mensagem = ""
-        } else if (nota <= 6) {
-            mensagem = "Aluno ficou abaixo da média"
-        } else if (nota <= 8) {
-            mensagem = "Aluno ficou na média"
-        } else {
-            mensagem = "Aluno acima da média"
-        }
-        if (frequencia < 75) {
-            mensagem += "<br>Aluno reprovado por frequência"
-        } else {
-            mensagem += "<br>Aluno aprovado por frequência"
         }
         div_mensagem.innerHTML = mensagem
     }

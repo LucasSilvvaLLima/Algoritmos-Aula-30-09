@@ -26,7 +26,7 @@
         var tv = sel_tv.value
         var preco = Number(in_valor.value)
         var faixa_preco = preco >= 800 && preco <= 2000
-        var confiavel = tv <= 2
+        var confiavel = tv == 1 || tv == 2
 
         if (!faixa_preco) {
             div_tv.innerHTML = "TV fora da faixa de preço <br>"
