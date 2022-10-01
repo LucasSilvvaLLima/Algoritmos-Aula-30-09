@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 05</title>
+</head>
+<body style="display:flex; flex-direction: column; align-items: center; padding-top: 0%;">
+    <h1>BATALHAS POKÉMONS</h1>
+    <h2>INICIANTE VS OPONENTE</h2>
+    <p>Qual o Pokémon do Iniciante: 
+        <select name="" id="sel_pokemon_iniciante">
+            <option value="1">Bulbasaur</option>
+            <option value="2">Squirtle</option>
+            <option value="3">Charmander</option>
+        </select>
+    </p>
+    <p>Qual o Pokémon do Oponente: 
+        <select name="" id="sel_pokemon_oponente">
+            <option value="1">Bulbasaur</option>
+            <option value="2">Squirtle</option>
+            <option value="3">Charmander</option>
+        </select>
+    </p>
+    <button onclick="batalha()">Batalhar!</button>
+    <div id="div_resultado"></div>
+</body>
+</html>
+<script>
+    var vitoria = 0;
+    var derrota = 0;
+    var empate = 0;
+    var mensagem = ""
+    
+    function batalha(){
+        var iniciante = Number(sel_pokemon_iniciante.value)
+        var oponente = Number(sel_pokemon_oponente.value)
+        var empatou = iniciante == oponente
+        var vitoria_iniciante = (iniciante == 1 && oponente == 2) || (iniciante == 2 && oponente == 3) || (iniciante == 3 && oponente == 1)
+        
+        if (!empatou) {
+            if (vitoria_iniciante) {
+                mensagem = "<h2>O iniciante venceu!</h2><br>";
+                vitoria++;
+            }else{
+                mensagem = "<h2>O iniciante perdeu!</h2><br>";
+                derrota++;
+            }
+        }else{
+            mensagem = "<h2>A batalha empatou!</h2><br>";
+            empate++;
+        }
+        mensagem += `Vitórias do Iniciante: ${vitoria} / Derrotas do Iniciante: ${derrota} / Empates: ${empate}`
+        div_resultado.innerHTML = mensagem
+    }
+</script>
